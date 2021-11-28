@@ -4,20 +4,25 @@ jobs:
 
   build:
     docker:
-      - image: cimg:17.1.0
+      - image: circleci/node:13.8.0
     steps:
+      - checkout
+      - run: npm i
       - run: npm run lint
 
   test:
     docker:
-      - image: cimg:17.1.0
+      - image: circleci/node:13.8.0
     steps:
+      - checkout
+      - run: npm i
       - run: npm run test
 
   analyze:
     docker:
-      - image: cimg:17.1.0
+      - image: circleci/node:13.8.0
     steps:
+      - checkout
       - run: npm audit
 
 workflows:
